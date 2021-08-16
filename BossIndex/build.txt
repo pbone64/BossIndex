@@ -1,3 +1,8 @@
 displayName = Boss Index
 author = pbone
 version = 0.1
+modReferences = PboneLib
+hideCode = false
+includePDB = true
+hideResources = false
+includeSource = true
