@@ -15,7 +15,7 @@ namespace BossIndex.Common.CrossMod.Call
         #region Mod.Call Methods
         internal object AddInfoBuilderCall(List<object> args)
         {
-            // Mod adding it - Info type - args
+            // Info type - Builder
             ModCallHelper.AssertArgs(args, typeof(string), typeof(IBossIndexInfoBuilder));
             string type = (string)args[0];
             IBossIndexInfoBuilder builder = (IBossIndexInfoBuilder)args[1];
