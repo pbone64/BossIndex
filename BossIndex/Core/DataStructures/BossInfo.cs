@@ -14,30 +14,30 @@ namespace BossIndex.Core.DataStructures
     {
         public string Type => "Boss";
 
-        public string AddedBy { get => _addedBy; }
-        public IList<string> ModifiedBy { get => _modifiedBy; }
+        public string AddedBy { get; }
+
+        public IList<string> ModifiedBy { get; }
 
         /// <summary>
-        /// The id of the boss this info represents
+        ///     The ID of the boss this info represents.
         /// </summary>
         public int BossNpcId;
-        public Func<bool> CompletedPredicate;
 
-        private string _addedBy;
-        private List<string> _modifiedBy;
+        public Func<bool> CompletedPredicate;
 
         public BossInfo(string addedBy, int bossNpcId, Func<bool> completedPredicate)
         {
             BossNpcId = bossNpcId;
             CompletedPredicate = completedPredicate;
 
-            _addedBy = addedBy;
-            _modifiedBy = new List<string>();
+            AddedBy = addedBy;
+            ModifiedBy = new List<string>();
         }
 
         public bool IsCompleted() => CompletedPredicate();
 
         public NPC GetAsNpc() => ContentSamples.NpcsByNetId[BossNpcId];
-        public NPCLoot GetLoot(ItemDropDatabase dropDatabase) => new NPCLoot(BossNpcId, dropDatabase);
+
+        public NPCLoot GetLoot(ItemDropDatabase dropDatabase) => new(BossNpcId, dropDatabase);
     }
 }

@@ -1,5 +1,5 @@
-﻿using BossIndex.Core.DataStructures;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BossIndex.Core.DataStructures;
 
 namespace BossIndex.Core.BossInfoBuilding
 {
@@ -9,12 +9,11 @@ namespace BossIndex.Core.BossInfoBuilding
 
         public BossIndexInfoFactory(bool suppressDefaultInfoTypes = false)
         {
-            if (!suppressDefaultInfoTypes)
-            {
-                RegisterBuilder("Boss", null);
-                RegisterBuilder("Event", null);
-                RegisterBuilder("Miniboss", null);
-            }
+            if (suppressDefaultInfoTypes) return;
+
+            RegisterBuilder("Boss", null);
+            RegisterBuilder("Event", null);
+            RegisterBuilder("Miniboss", null);
         }
 
         public void RegisterBuilder(string type, IBossIndexInfoBuilder instance) => Builders.Add(type, instance);

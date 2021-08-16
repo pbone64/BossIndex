@@ -5,12 +5,14 @@ namespace BossIndex.Core.DataStructures
     public interface IBossIndexInfo
     {
         /// <summary>
-        /// The mod that added this info. Not always the mod that added the boss NPC
+        ///     The mod that added this info. Not always the mod that added the boss NPC.
         /// </summary>
         public string AddedBy { get; }
+
         public IList<string> ModifiedBy { get; }
+
         public string Type { get; }
-        // TODO GetDescription?
+        // TODO: GetDescription?
 
         public bool IsCompleted();
     }

@@ -1,11 +1,11 @@
-﻿using BossIndex.Core.DataStructures;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BossIndex.Core.DataStructures;
 
 namespace BossIndex.Core.BossInfoBuilding
 {
     public interface IBossIndexInfoBuilder
     {
-        // First arg is always the name of the mod adding the info
+        // First argument is always the name of the mod adding the info
         public IBossIndexInfo Build(List<object> args);
     }
 }

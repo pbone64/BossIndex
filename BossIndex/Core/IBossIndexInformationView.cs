@@ -1,7 +1,7 @@
 ﻿namespace BossIndex.Core
 {
     /// <summary>
-    /// The visual side of a boss index
+    ///     The visual side and supplier of a boss index.
     /// </summary>
     public interface IBossIndexInformationView
     {
