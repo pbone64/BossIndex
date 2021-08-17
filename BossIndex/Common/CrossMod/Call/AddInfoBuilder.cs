@@ -26,8 +26,8 @@ namespace BossIndex.Common.CrossMod.Call
         internal object AddInfoBuilderCall(List<object> args)
         {
             // Info type - Builder
-
             ModCallHelper.AssertArgs(args, typeof(string), typeof(Func<List<object>, (string, IList<string>, string, Func<bool>)>));
+
             string type = (string) args[0];
             IBossIndexInfoBuilder builder = new WeakRefBossIndexInfoBuilder((Func<List<object>, (string, IList<string>, string, Func<bool>)>) args[1]);
             BossIndexMod.InformationFactory.RegisterBuilder(type, builder);

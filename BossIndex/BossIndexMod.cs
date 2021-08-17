@@ -11,6 +11,7 @@ using Terraria.ModLoader.Config;
 
 namespace BossIndex
 {
+    // TODO: Fix all summaries, some are funky
     public class BossIndexMod : Mod
     {
         public static BossIndexMod Instance => ModContent.GetInstance<BossIndexMod>();
