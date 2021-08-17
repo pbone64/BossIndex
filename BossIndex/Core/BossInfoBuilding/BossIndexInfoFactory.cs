@@ -5,7 +5,7 @@ namespace BossIndex.Core.BossInfoBuilding
 {
     public class BossIndexInfoFactory
     {
-        public Dictionary<string, IBossIndexInfoBuilder> Builders;
+        public Dictionary<string, IBossIndexInfoBuilder> Builders = new();
 
         public BossIndexInfoFactory(bool suppressDefaultInfoTypes = false)
         {
