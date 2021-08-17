@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BossIndex.Common.CrossMod.WeakRefReconstruction;
 using BossIndex.Core.BossInfoBuilding;
+using PboneLib.Services.CrossMod.Call;
 using PboneLib.Utils;
 
 namespace BossIndex.Common.CrossMod.Call
@@ -9,13 +10,12 @@ namespace BossIndex.Common.CrossMod.Call
     /// <summary>
     ///     Handles <c>AddInfoBuilder</c> <c>Call</c>s.
     /// </summary>
-    public class AddInfoBuilder : BossChecklistCallHandler
+    public class AddInfoBuilder : SimpleModCallHandler
     {
-        public override IEnumerable<(string, Func<List<object>, object>)> Functions =>
-            new (string, Func<List<object>, object>)[]
-            {
-                ("AddInfoBuilder", AddInfoBuilderCall)
-            };
+        public AddInfoBuilder() : base()
+        {
+            CallFunctions.Add("AddInfoBuilder", AddInfoBuilderCall);
+        }
 
         #region Mod.Call Methods
 
@@ -30,9 +30,7 @@ namespace BossIndex.Common.CrossMod.Call
             ModCallHelper.AssertArgs(args, typeof(string), typeof(Func<List<object>, (string, IList<string>, string, Func<bool>)>));
 
             string type = (string) args[0];
-
             IBossIndexInfoBuilder builder = new WeakRefBossIndexInfoBuilder((Func<List<object>, (string, IList<string>, string, Func<bool>)>) args[1]);
-
             BossIndexMod.InformationFactory.RegisterBuilder(type, builder);
 
             return null;

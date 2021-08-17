@@ -11,8 +11,7 @@ namespace BossIndex.Core
     {
         public IList<IBossIndexInfo> GetAllInfo();
 
-        public (string message, bool result) AddInfo(IBossIndexInfo info);
-
+        public (string message, bool result) AddInfo(IBossIndexInfo info)
         public (string message, bool result) ModifyInfo(string modifiedBy, Func<IBossIndexInfo, bool> predicate, Action<IBossIndexInfo> action);
 
         public void TransferBossInfo(IBossIndexInformationEngine other);

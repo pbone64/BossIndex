@@ -14,59 +14,41 @@ namespace BossIndex
     public class BossIndexMod : Mod
     {
         public static BossIndexMod Instance => ModContent.GetInstance<BossIndexMod>();
-
         public static ILog Log => Instance.Logger;
 
-        public static IBossIndexInformationEngine InformationEngine => Instance.InfoEngine;
+        public static IBossIndexInformationEngine InformationEngine => Instance.infoEngine;
+        public static IBossIndexInformationView InformationView => Instance.infoView;
+        public static BossIndexInfoFactory InformationFactory => Instance.infoFactory;
+        public static CrossModManager CrossMod => Instance.crossModManager;
 
-        public static IBossIndexInformationView InformationView => Instance.InfoView;
-
-        public static BossIndexInfoFactory InformationFactory => Instance.InfoFactory;
-
-        public static CrossModManager CrossMod => Instance.CrossModManager;
-
-        public IBossIndexInformationEngine InfoEngine;
-        public IBossIndexInformationView InfoView;
-        public BossIndexInfoFactory InfoFactory;
-        protected CrossModManager CrossModManager;
+        public IBossIndexInformationEngine infoEngine;
+        public IBossIndexInformationView infoView;
+        public BossIndexInfoFactory infoFactory;
+        protected CrossModManager crossModManager;
 
         public override void Load()
         {
             base.Load();
 
-            InfoFactory = new BossIndexInfoFactory();
+            infoFactory = new BossIndexInfoFactory();
 
-            CrossModManager = new CrossModManager();
-            CrossModManager.CallManager.RegisterHandler<AddInfo>();
+            crossModManager = new CrossModManager();
+            crossModManager.CallManager.RegisterHandler<AddInfo>();
 
             // Custom Loading
             CustomModLoader loader = new(this);
 
             // ModConfigs
-            ContentLoader cLoader = new(content =>
-            {
+            ContentLoader cLoader = new(content => {
                 // TODO Unhardcode me! Method in PConfig
-                AddConfig(content.Content.GetType().Name, (ModConfig) content.Content);
-            })
-            {
-                Settings =
-                {
-                    TryToLoadConditions = ContentLoader.ContentLoaderSettings.PresetTryToLoadConfigConditions
-                }
-            };
-
+                AddConfig(content.Content.GetType().Name, (ModConfig)content.Content);
+            });
+            cLoader.Settings.TryToLoadConditions = ContentLoader.ContentLoaderSettings.PresetTryToLoadConfigConditions;
             loader.Add(cLoader);
 
             // Everything else
-            cLoader = new ContentLoader(this.AddContent)
-            {
-                Settings =
-                {
-                    TryToLoadConditions = ContentLoader.ContentLoaderSettings.PresetNormalTryToLoadConditions
-                }
-            };
-
-            // Added for clarity, the Action only ctor automatically calls FillWithDefaultConditions
+            cLoader = new ContentLoader(this.AddContent);
+            cLoader.Settings.TryToLoadConditions = ContentLoader.ContentLoaderSettings.PresetTryToLoadConfigConditions;
             loader.Add(cLoader);
 
             // TODO: Fix localization loading in PboneLib!
@@ -77,8 +59,8 @@ namespace BossIndex
 
         public void SetInformationEngine(IBossIndexInformationEngine engine)
         {
-            InfoEngine?.TransferBossInfo(engine);
-            InfoEngine = engine;
+            infoEngine?.TransferBossInfo(engine);
+            infoEngine = engine;
         }
     }
 }

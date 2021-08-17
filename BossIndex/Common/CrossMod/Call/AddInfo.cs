@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BossIndex.Core.DataStructures;
+using PboneLib.Services.CrossMod.Call;
 using PboneLib.Utils;
 using Terraria.ModLoader;
 
@@ -9,13 +9,12 @@ namespace BossIndex.Common.CrossMod.Call
     /// <summary>
     ///     Handles calls to <c>AddInfo</c>. Adds an entry to the current information engine.
     /// </summary>
-    public class AddInfo : BossChecklistCallHandler
+    public class AddInfo : SimpleModCallHandler
     {
-        public override IEnumerable<(string, Func<List<object>, object>)> Functions =>
-            new (string, Func<List<object>, object>)[]
-            {
-                ("AddInfo", AddInfoCall)
-            };
+        public AddInfo() : base()
+        {
+            CallFunctions.Add("AddInfo", AddInfoCall);
+        }
 
         #region Mod.Call Methods
 
@@ -31,9 +30,7 @@ namespace BossIndex.Common.CrossMod.Call
             ModCallHelper.AssertArgs(args, typeof(Mod), typeof(string));
 
             Mod mod = (Mod) args[0];
-
             string type = (string) args[1];
-
             List<object> buildArgs = new();
 
             buildArgs.RemoveRange(0, 2);

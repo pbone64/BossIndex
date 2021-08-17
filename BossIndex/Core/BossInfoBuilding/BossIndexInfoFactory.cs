@@ -5,10 +5,12 @@ namespace BossIndex.Core.BossInfoBuilding
 {
     public class BossIndexInfoFactory
     {
-        public Dictionary<string, IBossIndexInfoBuilder> Builders = new();
+        public Dictionary<string, IBossIndexInfoBuilder> Builders;
 
         public BossIndexInfoFactory(bool suppressDefaultInfoTypes = false)
         {
+            Builders = new Dictionary<string, IBossIndexInfoBuilder>();
+
             if (suppressDefaultInfoTypes) return;
 
             RegisterBuilder("Boss", null);

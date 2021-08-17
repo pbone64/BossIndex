@@ -15,7 +15,6 @@ namespace BossIndex.Core.DataStructures
         public string Type => "Boss";
 
         public string AddedBy { get; }
-
         public IList<string> ModifiedBy { get; }
 
         /// <summary>
@@ -37,7 +36,6 @@ namespace BossIndex.Core.DataStructures
         public bool IsCompleted() => CompletedPredicate();
 
         public NPC GetAsNpc() => ContentSamples.NpcsByNetId[BossNpcId];
-
         public NPCLoot GetLoot(ItemDropDatabase dropDatabase) => new(BossNpcId, dropDatabase);
     }
 }
