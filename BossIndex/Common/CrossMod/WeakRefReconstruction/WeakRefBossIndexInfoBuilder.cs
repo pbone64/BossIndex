@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BossIndex.Core.BossInfoBuilding;
+using BossIndex.Core.BossIndexInfoBuilding;
 using BossIndex.Core.DataStructures;
 
 namespace BossIndex.Common.CrossMod.WeakRefReconstruction

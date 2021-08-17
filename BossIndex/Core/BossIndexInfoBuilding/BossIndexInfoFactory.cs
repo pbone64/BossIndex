@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using BossIndex.Core.DataStructures;
 
-namespace BossIndex.Core.BossInfoBuilding
+namespace BossIndex.Core.BossIndexInfoBuilding
 {
     public class BossIndexInfoFactory
     {

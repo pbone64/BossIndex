@@ -1,6 +1,6 @@
 using BossIndex.Common.CrossMod.Call;
 using BossIndex.Core;
-using BossIndex.Core.BossInfoBuilding;
+using BossIndex.Core.BossIndexInfoBuilding;
 using log4net;
 using PboneLib.CustomLoading;
 using PboneLib.CustomLoading.Content;
@@ -21,10 +21,10 @@ namespace BossIndex
         public static BossIndexInfoFactory InformationFactory => Instance.infoFactory;
         public static CrossModManager CrossMod => Instance.crossModManager;
 
-        public IBossIndexInformationEngine infoEngine;
-        public IBossIndexInformationView infoView;
-        public BossIndexInfoFactory infoFactory;
-        protected CrossModManager crossModManager;
+        private IBossIndexInformationEngine infoEngine;
+        private IBossIndexInformationView infoView;
+        private BossIndexInfoFactory infoFactory;
+        private CrossModManager crossModManager;
 
         public override void Load()
         {
@@ -61,6 +61,7 @@ namespace BossIndex
         {
             infoEngine?.TransferBossInfo(engine);
             infoEngine = engine;
+            infoView.Engine = engine;
         }
     }
 }

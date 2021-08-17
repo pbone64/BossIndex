@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BossIndex.Common.CrossMod.WeakRefReconstruction;
-using BossIndex.Core.BossInfoBuilding;
+using BossIndex.Core.BossIndexInfoBuilding;
 using PboneLib.Services.CrossMod.Call;
 using PboneLib.Utils;
 

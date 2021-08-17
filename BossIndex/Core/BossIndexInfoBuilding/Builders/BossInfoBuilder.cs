@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BossIndex.Core.DataStructures;
 using PboneLib.Utils;
 
-namespace BossIndex.Core.BossInfoBuilding.Builders
+namespace BossIndex.Core.BossIndexInfoBuilding.Builders
 {
     public class BossInfoBuilder : IBossIndexInfoBuilder
     {
