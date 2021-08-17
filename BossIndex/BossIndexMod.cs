@@ -25,9 +25,9 @@ namespace BossIndex
 
         public static CrossModManager CrossMod => Instance.CrossModManager;
 
-        protected IBossIndexInformationEngine InfoEngine;
-        protected IBossIndexInformationView InfoView;
-        protected BossIndexInfoFactory InfoFactory;
+        public IBossIndexInformationEngine InfoEngine;
+        public IBossIndexInformationView InfoView;
+        public BossIndexInfoFactory InfoFactory;
         protected CrossModManager CrossModManager;
 
         public override void Load()
