@@ -31,9 +31,7 @@ namespace BossIndex.Common.CrossMod.Call
             ModCallHelper.AssertArgs(args, typeof(Mod), typeof(string));
 
             Mod mod = (Mod) args[0];
-
             string type = (string) args[1];
-
             List<object> buildArgs = new();
 
             buildArgs.RemoveRange(0, 2);
